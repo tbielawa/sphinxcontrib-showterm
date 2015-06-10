@@ -20,20 +20,17 @@ import os
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 if not on_rtd:  # only import and set the theme if we're building docs locally
-        import sphinx_rtd_theme
-        html_theme = 'sphinx_rtd_theme'
-        html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+    import sphinx_rtd_theme
+    html_theme = 'sphinx_rtd_theme'
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-# This first `insert` adds the parent directory to the load path. From
-# here we can load the showterm plugin
-sys.path.insert(0, os.path.abspath('.'))
-# This `insert` adds the juicer source code to the load path. This
-# enables auto-api functionality, source code embedding, etc
-sys.path.insert(1, os.path.relpath('../../juicer/'))
+# This first `insert` adds the plugin source directory to the load
+# path. From here we can load the showterm plugin
+sys.path.insert(0, os.path.abspath('../../sphinxcontrib/'))
 
 # -- General configuration ------------------------------------------------
 
@@ -45,7 +42,6 @@ sys.path.insert(1, os.path.relpath('../../juicer/'))
 # ones.
 extensions = [
     'showterm',
-    'sphinx.ext.autodoc',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -61,15 +57,15 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Juicer'
-copyright = u'2015, Andrew Butcher'
+project = u'showterm'
+copyright = u'2015, Tim Bielawa'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = '1.0.0'
+version = '0.0.1'
 # The full version, including alpha/beta/rc tags.
 release = ''
 
@@ -194,7 +190,7 @@ html_last_updated_fmt = '%Y-%m-%d - %H:%M:%S %Z'
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Juicerdoc'
+htmlhelp_basename = 'showtermdocs'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -214,8 +210,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'Juicer.tex', u'Juicer Documentation',
-   u'Andrew Butcher', 'manual'),
+  ('index', 'showterm.tex', u'showterm documentation',
+   u'Tim Bielawa', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -244,8 +240,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'juicer', u'Juicer Documentation',
-     [u'Andrew Butcher'], 1)
+    ('index', 'showterm', u'showterm documentation',
+     [u'Tim Bielawa'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -258,9 +254,9 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'Juicer', u'Juicer Documentation',
-   u'Andrew Butcher', 'Juicer', 'One line description of project.',
-   'Miscellaneous'),
+  ('index', 'showterm', u'showterm documentation',
+   u'Tim Bielawa', 'showterm', 'sphinx showterm termshows extension.',
+   'documentation'),
 ]
 
 # Documents to append as an appendix to all manuals.

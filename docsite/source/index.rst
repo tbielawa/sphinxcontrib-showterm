@@ -1,27 +1,17 @@
-.. image:: https://api.travis-ci.org/abutcher/juicer.png
-   :target: https://travis-ci.org/abutcher/juicer/
-   :align: right
-   :height: 19
-   :width: 77
+Sphinx Showterm
+###############
 
-.. image:: https://coveralls.io/repos/abutcher/juicer/badge.png?branch=master
-   :target: https://coveralls.io/r/abutcher/juicer?branch=master
-   :align: right
-   :height: 19
-   :width: 77
+A Sphinx extension to embed termshows from showterm.io.
 
 
-Juicer
-######
-Juicer is a command-line interface to the `Pulp REST API
-<https://pulp.readthedocs.org/en/2.6-release/dev-guide/integration/rest-api/index.html>`_
-which provides a shopping cart style approach to uploading and
-promoting groups of packages, files, or docker images through multiple
-environments.
+Example
+*******
+
+Below is the example termshow from the showterm.io homepage:
+
+.. showterm:: 7b5f8d42ba021511e627e
+
 
 .. toctree::
    :maxdepth: 2
    :numbered:
-
-   getting_started.rst
-   contributing.rst
