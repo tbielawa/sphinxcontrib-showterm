@@ -12,7 +12,7 @@ requires = ['Sphinx>=0.9']
 
 setup(
     name='sphinxcontrib-showterm',
-    version='0.1',
+    version='0.0.1',
     url='https://github.com/tbielawa/sphinxcontrib-showterm',
     author='Tim Bielawa',
     author_email='timbielawa@gmail.com',
