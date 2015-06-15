@@ -17,7 +17,7 @@ from sphinx.util.compat import Directive
 * Custom Usage - Use a private/third-party showterm server
 
 .. showterm:: 7b5f8d42ba021511e627e
-   :showterm_url: https://showterm.example.com
+   :showtermurl: https://showterm.example.com
 
 * Custom Usage - Specify a width and height
 
@@ -26,13 +26,11 @@ from sphinx.util.compat import Directive
    :height: 600
 """
 
-CONTROL_HEIGHT = 30
-# TODO: Make this a configuration parameter!!!!111
-# The leading "//" is a shortcut to automatically use the
-# protocol which matches the loading pages (https enabled
-# documentation will embed the https showterm viewer)
-DEFAULT_SHOWTERM_URL = "https://showterm.io"
+# Configuration parameter defaults
 
+DEFAULT_SHOWTERM_URL = "https://showterm.io"
+DEFAULT_TERMSHOW_WIDTH = '640px'
+DEFAULT_TERMSHOW_HEIGHT = '480px'
 
 def showterm_url(baseurl, id, speed=None):
     if speed is not None:
@@ -63,13 +61,10 @@ class showterm(nodes.General, nodes.Element):
 
 
 def visit_showterm_node(self, node):
-    # width = node["width"]
-    # height = node["height"]
+    width = node["width"]
+    height = node["height"]
     showtermurl = node["showtermurl"]
     # speed = node["speed"]
-
-    height = '480px'
-    width = '640px'
 
     style = {
         "width": width,
@@ -105,27 +100,31 @@ class Showterm(Directive):
     #
     # http://docutils.sourceforge.net/docs/howto/rst-directives.html#option-conversion-functions
     option_spec = {
-        # "width": directives.unchanged,
-        # "height": directives.unchanged,
+        "width": directives.unchanged,
+        "height": directives.unchanged,
         "showtermurl": directives.unchanged,
         # "speed": directives.unchanged,
     }
 
     def run(self):
         config = self.state.document.settings.env.config
-        showtermurl = self.options.get("showtermurl", None)
+        showtermurl = self.options.get("showtermurl", config.showtermurl)
+        width = self.options.get("width", config.showtermwidth)
+        height = self.options.get("height", config.showtermheight)
 
-        if showtermurl is None:
-            showtermurl = config.showtermurl
-
-        return [showterm(id=self.arguments[0], showtermurl=showtermurl)]
+        return [showterm(id=self.arguments[0], showtermurl=showtermurl,
+                         width=width, height=height)]
 
 
 def setup(app):
-    # Default showterm url, change this if you run your own private
-    # showterm server. If the parameter changes between builds then
-    # the entire HTML document will be rebuilt
+    # Default showterm url, change this (in your conf.py!) if you run
+    # your own private showterm server. If the parameter changes
+    # between builds then the entire HTML document will be rebuilt
     app.add_config_value('showtermurl', DEFAULT_SHOWTERM_URL, 'html')
+
+    # Default width and height
+    app.add_config_value('showtermwidth', DEFAULT_TERMSHOW_WIDTH, 'html')
+    app.add_config_value('showtermheight', DEFAULT_TERMSHOW_HEIGHT, 'html')
 
     app.add_node(showterm, html=(visit_showterm_node, depart_showterm_node))
     app.add_directive("showterm", Showterm)
@@ -133,8 +132,4 @@ def setup(app):
 possible future params:
 title - to add a title element
 caption - short little bit below the cap
-width
-height
-speed - fast, slow, stop
-
 """
