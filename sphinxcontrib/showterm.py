@@ -31,6 +31,7 @@ from sphinx.util.compat import Directive
 DEFAULT_SHOWTERM_URL = "https://showterm.io"
 DEFAULT_TERMSHOW_WIDTH = '640px'
 DEFAULT_TERMSHOW_HEIGHT = '480px'
+DEFAULT_TERMSHOW_SPEED = 'slow'
 
 def showterm_url(baseurl, id, speed=None):
     if speed is not None:
@@ -42,6 +43,8 @@ def showterm_url(baseurl, id, speed=None):
         id=id,
         speed=speed)
 
+def speed_opt(argument):
+    return directives.choice(argument, ('slow', 'fast', 'stop'))
 
 def get_size(d, key):
     if key not in d:
@@ -64,7 +67,7 @@ def visit_showterm_node(self, node):
     width = node["width"]
     height = node["height"]
     showtermurl = node["showtermurl"]
-    # speed = node["speed"]
+    speed = node["speed"]
 
     style = {
         "width": width,
@@ -72,7 +75,7 @@ def visit_showterm_node(self, node):
         "border": "0",
     }
     attrs = {
-        "src": showterm_url(showtermurl, node['id'], 'stop'),
+        "src": showterm_url(showtermurl, node['id'], speed),
         "style": css(style),
         "class": "showterm showterm-%s" % node['id'],
     }
@@ -102,8 +105,8 @@ class Showterm(Directive):
     option_spec = {
         "width": directives.unchanged,
         "height": directives.unchanged,
+        "speed": speed_opt,
         "showtermurl": directives.unchanged,
-        # "speed": directives.unchanged,
     }
 
     def run(self):
@@ -111,9 +114,10 @@ class Showterm(Directive):
         showtermurl = self.options.get("showtermurl", config.showtermurl)
         width = self.options.get("width", config.showtermwidth)
         height = self.options.get("height", config.showtermheight)
+        speed = self.options.get("speed", config.showtermspeed)
 
         return [showterm(id=self.arguments[0], showtermurl=showtermurl,
-                         width=width, height=height)]
+                         width=width, height=height, speed=speed)]
 
 
 def setup(app):
@@ -125,6 +129,11 @@ def setup(app):
     # Default width and height
     app.add_config_value('showtermwidth', DEFAULT_TERMSHOW_WIDTH, 'html')
     app.add_config_value('showtermheight', DEFAULT_TERMSHOW_HEIGHT, 'html')
+
+    # Default speed to play (or not) the termshow at. 'slow' is
+    # actually the same as specifying no speed at all (it's the
+    # default "real-time" speed)
+    app.add_config_value('showtermspeed', DEFAULT_TERMSHOW_SPEED, 'html')
 
     app.add_node(showterm, html=(visit_showterm_node, depart_showterm_node))
     app.add_directive("showterm", Showterm)

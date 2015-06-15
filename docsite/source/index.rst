@@ -90,3 +90,33 @@ Usage
          :width: 1080px
          :height: 720px
 
+   The speed of the termshow can also be configured by using the
+   ``speed`` option flag. Acceptable values include:
+
+   * ``slow`` - *default* (equivalent to real-time speed)
+   * ``fast`` - *2x the original speed*
+   * ``stop`` - *stopped*
+
+   Below is an example where we embed the termshow but do not run it
+   yet. This termshow is stopped and awaiting the client to start it::
+
+      .. showterm:: 7b5f8d42ba021511e627e
+         :speed: stop
+
+   Attempting to use any other value for the ``speed`` option will
+   result in a compilation error like the following::
+
+      $ make html
+      sphinx-build -b html -d build/doctrees   source build/html
+      Running Sphinx v1.1.3
+      loading pickled environment... done
+      building [html]: targets for 1 source files that are out of date
+      ...
+      /home/tbielawa/Projects/sphinxcontrib-showterm/docsite/source/index.rst:27: ERROR: Error in "showterm" directive:
+      invalid option value: (option: "speed"; value: 'derp')
+      "derp" unknown; choose from "slow", "fast", or "stop".
+
+      .. showterm:: 7b5f8d42ba021511e627e
+         :speed: derp
+      /home/tbielawa/Projects/sphinxcontrib-showterm/docsite/source/index.rst:107: WARNING: Literal block expected; none found.
+

@@ -18,3 +18,4 @@ showtermenv
 cover/
 docsite/build/html/
 docsite/build/doctrees/
+sphinxcontrib_showterm.egg-info
