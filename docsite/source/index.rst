@@ -12,9 +12,9 @@ A Sphinx extension to embed termshows from `showterm.io
 documentation.
 
 
-.. toctree::
-   :maxdepth: 2
-   :numbered:
+.. contents::
+   :depth: 2
+   :local:
 
 
 Example
@@ -30,7 +30,7 @@ Below is the example termshow from the `showterm.io homepage
 Usage
 *****
 
-.. rst:directive:: .. showterm:: showterm_id
+.. rst:directive:: .. showterm::
 
    The :rst:dir:`showterm` directive requires one argument:
    ``showterm_id``, the ID of your termshow.
@@ -40,6 +40,7 @@ Usage
    like this::
 
       .. showterm:: 7b5f8d42ba021511e627e
+
 
    The showterm.io service can also be `ran privately
    <https://github.com/ConradIrwin/showterm.io>`_. If you're running
@@ -61,3 +62,31 @@ Usage
 
       .. showterm:: 7b5f8d42ba021511e627e
          :showtermurl: https://utils.example.com/showterm/
+
+   Limited control over the presentation of the termshow is enabled
+   via the ``width`` and ``height`` flag options. The default values
+   for these options are **640px** and **480px** respectively.
+
+   Acceptable values for the ``width`` and ``height`` options are
+   specified as either an exact pixel value (with the ``px`` unit), or
+   as a percentage (with the ``%`` unit). Spaces count, so do not
+   include them between the number and the unit:
+
+   **Good:**
+
+   * ``1337px``
+   * ``33%``
+
+   **Bad:**
+
+   * ``100 px``
+   * ``100``
+   * ``100 %``
+
+   Below is an example where we explicitly set the ``width`` and
+   ``height`` parameters to *higher resolution* values::
+
+      .. showterm:: 7b5f8d42ba021511e627e
+         :width: 1080px
+         :height: 720px
+
