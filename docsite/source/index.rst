@@ -158,3 +158,43 @@ Usage
       .. showterm:: 7b5f8d42ba021511e627e
          :speed: derp
       /home/tbielawa/Projects/sphinxcontrib-showterm/docsite/source/index.rst:107: WARNING: Literal block expected; none found.
+
+
+Configuration Settings (``conf.py``)
+************************************
+
+You can set termshow display default configuration parameters in your
+``conf.py`` file. None of these settings need to be defined in your
+``conf.py`` file explicitly. Below is a list of supported settings and
+their defaults if not overridden.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Description
+     - Default
+   * - ``showtermurl``
+     - Base url to termshows. Change if you run your own showterm server
+     - ``https://showterm.io``
+   * - ``showtermwidth``
+     - Default termshow width
+     - ``640px``
+   * - ``showtermheight``
+     - Default termshow height
+     - ``480px``
+   * - ``showtermspeed``
+     - Default termshow speed. Acceptable values are: ``slow``, ``fast``, and ``stop``.
+     - ``stop``
+
+
+Features Coming Soon
+********************
+
+Check out all open issues/RFEs on the GitHub issue tracker:
+`tbielawa/sphinxcontrib-showterm
+<https://github.com/tbielawa/sphinxcontrib-showterm/issues>`_
+
+
+* `Support generated lists of termshows <https://github.com/tbielawa/sphinxcontrib-showterm/issues/3>`_
+* `Support termshow title/captions <https://github.com/tbielawa/sphinxcontrib-showterm/issues/4>`_
