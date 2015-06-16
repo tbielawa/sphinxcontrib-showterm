@@ -11,7 +11,8 @@ What?
 This extension embeds an iframe in your generated documentation which
 plays back a terminal capture (i.e., everything visually that happened
 in a command line shell). Terminal captures are created with the
-``showterm`` utility and are uploaded to showterm.io:
+`showterm <https://github.com/ConradIrwin/showterm>`_ utility and are
+uploaded to showterm.io:
 
 Usage is very simple. Once you've uploaded a termshow, copy the
 termshow ID from the URL and paste it into the ``.. showterm::``
