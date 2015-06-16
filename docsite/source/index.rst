@@ -20,11 +20,50 @@ documentation.
 Example
 *******
 
-Below is the example termshow from the `showterm.io homepage
+Below is the example termshow from the showterm.io `homepage
 <https://showterm.io/>`_. It is embedded in this document using the
-``showterm`` extension.:
+:rst:dir:`showterm` extension:
 
 .. showterm:: 7b5f8d42ba021511e627e
+
+
+Installation
+************
+
+You will need to have the python module ``sphinxcontrib-showterm``
+installed to use this extension. This is available via `PyPi
+<https://pypi.python.org/pypi/sphinxcontrib-showterm/>`_::
+
+    $ pip install sphinxcontrib-showterm
+
+And inside of your ``conf.py`` file you will add
+``'sphinxcontrib.showterm'`` to the ``extensions`` list:
+
+.. code-block:: python
+   :emphasize-lines: 3
+
+   # Add any Sphinx extension module names here, as strings. They can be extensions
+   # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
+   extensions = ['sphinx.ext.autodoc', 'sphinxcontrib.showterm']
+
+Are you using a site like `readthedocs <http://readthedocs.org/>`_ to
+host your documentation? You will need to fill in a value for the
+``Requirements file`` option under the **Admin** - **Advanced
+Settings** menu. This file needs to list any modules you need ``pip``
+installed prior to building your documentation.
+
+.. image:: rtd-settings.png
+
+For example, **this** docsite is rather simple. It only requires the
+:rst:dir:`showterm` extension to build the documentation
+successfully. In *readthedocs* this project is configured to use a
+file called `doc-requirements.txt
+<https://github.com/tbielawa/sphinxcontrib-showterm/blob/master/doc-requirements.txt>`_. The
+contents of which is displayed below:
+
+.. literalinclude:: ../../doc-requirements.txt
+
+
 
 
 Usage
@@ -119,4 +158,3 @@ Usage
       .. showterm:: 7b5f8d42ba021511e627e
          :speed: derp
       /home/tbielawa/Projects/sphinxcontrib-showterm/docsite/source/index.rst:107: WARNING: Literal block expected; none found.
-
