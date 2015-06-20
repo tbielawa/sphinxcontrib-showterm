@@ -18,7 +18,7 @@ The source for sphinxcontrib-showterm is hosted on GitHub:
 
 
 Example
-*******
+#######
 
 Below is the example termshow from the showterm.io `homepage
 <https://showterm.io/>`_. It is embedded in this document using the
@@ -28,7 +28,7 @@ Below is the example termshow from the showterm.io `homepage
 
 
 Installation
-************
+############
 
 You will need to have the python module ``sphinxcontrib-showterm``
 installed to use this extension. This is available via `PyPi
@@ -68,7 +68,7 @@ contents of which is displayed below:
 
 
 Usage
-*****
+#####
 
 .. rst:directive:: .. showterm::
 
@@ -162,7 +162,7 @@ Usage
 
 
 Configuration Settings (``conf.py``)
-************************************
+####################################
 
 You can set termshow display default configuration parameters in your
 ``conf.py`` file. None of these settings need to be defined in your
@@ -190,7 +190,7 @@ their defaults if not overridden.
 
 
 Features Coming Soon
-********************
+####################
 
 Check out all open issues/RFEs on the GitHub issue tracker:
 `tbielawa/sphinxcontrib-showterm
