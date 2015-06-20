@@ -1,3 +1,10 @@
+.. image:: https://readthedocs.org/projects/sphinxcontrib-showterm/badge/?version=latest
+   :target: http://sphinxcontrib-showterm.rtfd.org/
+   :align: right
+   :height: 19
+   :width: 77
+
+
 showterm
 ########
 
@@ -21,7 +28,16 @@ directive::
     .. showterm:: 7b5f8d42ba021511e627e
 
 The showterm extension allows you to specify a private showterm
-server, termshow width and height, and default playback speed.
+server, termshow width and height, and default playback speed
+(``stop``, ``slow``, ``fast``) with the following option flags::
+
+    .. showterm:: 7b5f8d42ba021511e627e
+       :showtermurl: https://utils.example.com/showterm/
+       :width: 1080px
+       :height: 720px
+       :speed: fast
+
+
 
 Examples/Documentation
 ######################
