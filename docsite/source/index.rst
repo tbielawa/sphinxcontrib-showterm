@@ -15,9 +15,6 @@ The source for sphinxcontrib-showterm is hosted on GitHub:
 `tbielawa/sphinxcontrib-showterm
 <https://github.com/tbielawa/sphinxcontrib-showterm>`_
 
-.. contents::
-   :depth: 2
-   :local:
 
 
 Example
@@ -57,10 +54,11 @@ installed prior to building your documentation.
 
 .. image:: rtd-settings.png
 
-For example, **this** docsite is rather simple. It only requires the
-:rst:dir:`showterm` extension to build the documentation
-successfully. In *readthedocs* this project is configured to use a
-file called `doc-requirements.txt
+For example, **this** docsite is `rather simple
+<https://github.com/tbielawa/sphinxcontrib-showterm/blob/master/docsite/source/conf.py#L43>`_. It
+only requires the :rst:dir:`showterm` extension to build the
+documentation successfully. In *readthedocs* this project is
+configured to use a file called `doc-requirements.txt
 <https://github.com/tbielawa/sphinxcontrib-showterm/blob/master/doc-requirements.txt>`_. The
 contents of which is displayed below:
 
