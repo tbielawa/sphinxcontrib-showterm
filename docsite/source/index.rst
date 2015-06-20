@@ -16,6 +16,10 @@ The source for sphinxcontrib-showterm is hosted on GitHub:
 <https://github.com/tbielawa/sphinxcontrib-showterm>`_
 
 
+.. contents::
+   :depth: 2
+   :local:
+
 
 Example
 #######
